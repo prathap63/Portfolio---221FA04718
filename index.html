@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prathaps's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 5px 10px;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #444;
+        }
+
+        /* About Section */
+        #about {
+            padding: 60px 0;
+            background: #f0f8ff; /* Alice Blue */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 20%;
+            object-fit: cover;
+            animation: fadeIn 2s;
+        }
+
+        .bio {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .bio h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .bio p {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: #e6f7ff; /* Light Blue */
+            padding: 60px 0;
+        }
+
+        .skills-grid {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .skill {
+            text-align: center;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #0056b3; /* Dark Blue */
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            animation: rotateIn 2s;
+        }
+
+        .skill p {
+            font-size: 1.2em;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: #ffebf2; /* Light Pink */
+            padding: 60px 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .project {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+        }
+
+        .project:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .project-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+
+        .project-info p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #555;
+        }
+
+        /* Education Section */
+        #education {
+            background: #eaf4e8; /* Light Green */
+            padding: 60px 0;
+        }
+
+        .education-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .education-item {
+            flex: 1;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .education-item:hover {
+            transform: scale(1.05);
+        }
+
+        .education-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .education-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .education-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+
+        .education-info p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #fdf6e3; /* Very Pale Yellow */
+            padding: 60px 0;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button.btn {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        button.btn:hover {
+            background: #555;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                text-align: center;
+            }
+
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .bio {
+                margin-left: 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                transform: rotate(-360deg);
+            }
+            to {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Prathap</h1>
+            <p class="tagline">Web Developer & Designer</p>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <div class="bio">
+                <h2>About Me</h2>
+                <p>I am currently a third-year BTech student at Vignan University, deeply passionate about coding and web application development. I am dedicated to expanding my knowledge and skills in these areas, always eager to learn and create innovative web solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">
+                    <div class="circle">75%</div>
+                    <p>HTML</p>
+                </div>
+                <div class="skill">
+                    <div class="circle">75%</div>
+                    <p>CSS</p>
+                </div>
+                <div class="skill">
+                    <div class="circle">50%</div>
+                    <p>JavaScript</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <article class="project">
+                    <img src="housing.jpeg" alt="Project 1">
+                    <div class="project-info">
+                        <h3>DMT Project</h3>
+                        <p>Housing price predictions using data mining analyze historical data and trends to forecast property values, helping guide real estate decisions.</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </article>
+                <article class="project">
+                    <img src="stroke.webp" alt="Project 2">
+                    <div class="project-info">
+                        <h3>ML Project</h3>
+                        <p>Brain stroke prediction with machine learning analyzes health data to forecast stroke risk. These models use historical records to identify patterns and enable early intervention.</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </article>
+                <article class="project">
+                    <img src="fake ml.avif" alt="Project 3">
+                    <div class="project-info">
+                        <h3>IDP Project</h3>
+                        <p>Fake news detection with machine learning analyzes news content to identify and flag false information, improving content reliability.</p>
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-grid">
+                <div class="education-item">
+                    <img src="school.jpeg" alt="Tenth Class">
+                    <div class="education-info">
+                        <h3>Tenth Class</h3>
+                        <p>I had done my schooling in St.Joseph's hight school Araku R.S</p>
+                        <p>2019-2020</p>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <img src="college.webp" alt="Intermediate">
+                    <div class="education-info">
+                        <h3>Intermediate</h3>
+                        <p>I had done my class 12th in Narayana college Asilametta Vskp</p>
+                        <p> 2020-2022</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form action="mailto:221fa04718@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Prathap. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
